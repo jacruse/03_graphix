@@ -27,14 +27,6 @@ int main() {
 
   print_matrix(identity);
 
-  //turn identity into transformation matrix
-  identity->m[0][0] = 2;
-  identity->m[1][1] = 2;
-  identity->m[2][2] = 2;
-  identity->m[3][3] = 2;  
-
-  print_matrix(identity);
-
   /*rand des
   add_point(edges, 0, 500, 350);
   add_point(edges, 250, 250, 350);
@@ -43,11 +35,18 @@ int main() {
   add_edge(edges, 250, 250, 250, 375, 125, 250);
   */
 
-  //box
+  /*box
   add_edge(edges, 0, 0, 0, 0, 50, 0);
   add_edge(edges, 0, 50, 0, 50, 50, 0);
   add_edge(edges, 50, 50, 0, 50, 0, 0);
   add_edge(edges, 50, 0, 0, 0, 0, 0);
+  */
+
+  //triangle
+  add_point(edges, 125, 125, 0);
+  add_edge(edges, 0, 0, 0, 125, 250, 0);
+  add_edge(edges, 125, 250, 0, 250, 0, 0);
+  add_edge(edges, 250, 0, 0, 0, 0, 0);
   
 
   print_matrix(edges);
@@ -56,8 +55,22 @@ int main() {
 
   print_matrix(edges);
 
+  //turn identity into transformation matrix
+  identity->m[0][0] = 2;
+  identity->m[1][1] = 2;
+  identity->m[2][2] = 2;
+  identity->m[3][3] = 2;  
+
+  print_matrix(identity);
+
+  matrix_mult(identity, edges);
+
+  print_matrix(edges);
+
+
   draw_lines(edges, s, c);
   display(s);
   free_matrix( edges );
   free_matrix( identity );
+  save_extension(s, "matrix.png");
 }
