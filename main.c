@@ -48,6 +48,7 @@ int main() {
   add_edge(edges, 125, 250, 0, 250, 0, 0);
   add_edge(edges, 250, 0, 0, 0, 0, 0);
   
+  draw_lines(edges, s, c);
 
   print_matrix(edges);
 
@@ -67,8 +68,9 @@ int main() {
 
   print_matrix(edges);
 
-
   draw_lines(edges, s, c);
+
+
   display(s);
   free_matrix( edges );
   free_matrix( identity );
